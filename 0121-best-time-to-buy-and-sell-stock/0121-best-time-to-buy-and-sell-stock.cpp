@@ -4,7 +4,10 @@ public:
         int buy = prices[0];
         int profit = 0;
         for (int x: prices) {
-            buy = min(x,buy);            
+            if (x < buy) {
+                buy = x;
+            } 
+            
             profit = max(profit, x - buy);
         }
         return profit;
