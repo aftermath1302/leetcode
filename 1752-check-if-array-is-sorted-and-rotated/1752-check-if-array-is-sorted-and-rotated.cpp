@@ -2,28 +2,23 @@ class Solution {
 public:
     bool check(vector<int>& nums) {
         int n = nums.size();
-        vector<int> nums2(n);
+        int count = 0;
 
-        for (int offset = 0; offset < n; offset++) {
-            int index = 0;
-            for (int i = offset; i < n; i++) {
-                nums2[index++] = nums[i];
-            }
-            for (int i = 0; i < offset; i++) {
-                nums2[index++] = nums[i];
-            }
+        if (n <= 1) {
+            return true;
+        }
 
-            bool isSorted = true;
-            for (int i = 0; i < n -1 ; i++) {
-                if (nums2[i] > nums2[i+1]) {
-                    isSorted = false;
-                }
-            }
-            
-            if (isSorted) {
-                return true;
+        for (int i = 1; i < n; i++) {
+            if(nums[i-1] > nums[i]) {
+                count++;
+                if (count > 1) return false;
             }
         }
-        return false;       
+
+        if (nums[n-1] > nums[0]) {
+            count++;
+        }
+
+        return count <= 1;
     }
 };
