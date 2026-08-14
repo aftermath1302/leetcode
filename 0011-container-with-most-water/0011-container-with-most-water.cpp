@@ -5,15 +5,15 @@ public:
         long long left = 0;
         long long right = n - 1;
         long long resArea = 0;
-
-        while (right >= left) {
+        while (left <= right) {
             long long area = (right - left) * min(height[left], height[right]);
-            resArea = max(area,resArea);
-            
-            if(height[left] < height[right])
+            resArea = max(area, resArea);
+            if (height[left] < height[right]) {
                 left++;
-            else
+            }
+            else {
                 right--;
+            }
         }
         return resArea;
     }
