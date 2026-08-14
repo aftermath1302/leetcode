@@ -3,9 +3,9 @@ public:
     int maxProfit(vector<int>& prices) {
         int buy = prices[0];
         int profit = 0;
-        for (int x: prices) {
-            buy = min(x,buy);            
-            profit = max(profit, x - buy);
+        for (auto price: prices) {
+            buy = min(buy, price);
+            profit = max(profit, price - buy);
         }
         return profit;
     }
