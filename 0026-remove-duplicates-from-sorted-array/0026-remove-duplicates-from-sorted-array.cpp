@@ -2,14 +2,22 @@ class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
         int n = nums.size();
-        if (nums.empty()) return 0;
-        int pointer = 1;
-        for (int i = 1; i < n; i++) {
-            if (nums[i-1] != nums[i]) {
-                nums[pointer] = nums[i];
-                pointer++; 
+        int low = 0;
+        int high = 1;
+        int res = 1;
+
+        while (high < n) {
+            if (nums[high] == nums[high - 1]) {
+                high++;
+            }
+            else {
+                nums[low + 1] = nums[high];
+                low++;
+                high++;
+                res++;
             }
         }
-        return pointer;
+        
+        return res;
     }
 };
